@@ -1,0 +1,6 @@
+#ifndef HUMANOID_CHARACTER
+#define HUMANOID_CHARACTER
+
+
+
+#endif // !BATTLE_FIELD

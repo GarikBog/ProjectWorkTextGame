@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\big_event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\game_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\small_event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\stats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\battle_cell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\battle_field.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\humanoid_character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\lootable_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\non_humanoid_character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Player\inventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Player\player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\icon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\ui_inventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\widget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\widget_fabric.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\cpp_projects\ProjectWorkTextGame\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\big_event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\game_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\small_event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Basic\stats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\battle_cell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\battle_field.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\humanoid_character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\lootable_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\non_humanoid_character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\FightSystem\object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Player\inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Player\player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\icon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\ui_inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\widget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\cpp_projects\ProjectWorkTextGame\src\Visual\widget_fabric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\cpp_projects\ProjectWorkTextGame\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B762F535-3C0B-3E12-96C5-3A6A8A705105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2061DD57-0ECB-3561-9681-4AA42459052E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

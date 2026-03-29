@@ -1,0 +1,6 @@
+#ifndef NON_HUMANOID_CHARACTER
+#define NON_HUMANOID_CHARACTER
+
+
+
+#endif // !NHC
