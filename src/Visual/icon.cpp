@@ -3,9 +3,11 @@
 #define ICON
 #endif  // !ICON
 
+#include "../Basic/game_state.h"
 void Icon::SetTexture(const std::string texture_file) {
-  if (!texture_.loadFromFile(texture_file)) {
-    texture_.loadFromFile("../textures/error.jpg");
+  if (!texture_.loadFromFile(texture_file) &&
+      !texture_.loadFromFile(ASSETS_PATH + texture_file)) {
+    texture_.loadFromFile(ASSETS_PATH "/textures/error.jpg");
     texture_rectangle_ = {0, 0, 800, 800};
   }
 }

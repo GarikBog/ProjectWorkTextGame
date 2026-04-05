@@ -13,6 +13,8 @@
 #define IOSTREAM
 #endif
 
+#include "../Basic/game_state.h"
+
 std::wstring Console::StringToWString(const std::string& str) {
   if (str.empty()) return L"";
 
@@ -43,7 +45,7 @@ Console::Console(sf::RenderWindow& window, const std::pair<float, float> pos,
                  const sf::IntRect texture_rectangle)
     : Widget(window, pos, scale, texture_file, texture_rectangle) {
   // Load font
-  if (!font_.loadFromFile("../fonts/DwarvenStonecraftCyr.otf")) {
+  if (!font_.loadFromFile(ASSETS_PATH "/fonts/CorrectionBrush.otf")) {
     std::cerr << "ERROR: Failed to load font!" << std::endl;
   }
 
@@ -58,7 +60,6 @@ Console::Console(sf::RenderWindow& window, const std::pair<float, float> pos,
   input_display_.setFillColor(sf::Color::White);
 
   // Initial messages
-  Log("Текст");
   UpdateLayout();
   ScrollToBottom();
 }
@@ -98,10 +99,6 @@ void Console::Draw() {
   // Draw input area
   window_.draw(input_box_);
   window_.draw(input_display_);
-}
-
-bool Console::Click(const sf::Vector2i& mouse_pos) {
-  return CheckMouseBorders(mouse_pos);
 }
 
 void Console::HandleEvent(const sf::Event& event) {
@@ -185,11 +182,6 @@ void Console::RebuildCache() {
     text.setFillColor(sf::Color::White);
     text.setPosition(GetX() + kLeftMargin_, y);
 
-    // Color for commands
-    if (lines_[i].find(L"> ") == 0) {
-      text.setFillColor(sf::Color::Green);
-    }
-
     text_cache_.push_back(text);
     y += kLineHeight_;
   }
@@ -252,5 +244,11 @@ void Console::ScrollToTop() {
 void Console::ProcessCommand(const std::wstring& cmd) {
   if (cmd.empty()) return;
 
-  AddLine(L"You: " + cmd, sf::Color::Green);
+  if (cmd == L"get player stats") {
+    AddLine(L"Player Stats:");
+    AddLine(StringToWString(
+        GameState::GetGameState().GetPlayer().GetStats().GetStatsInString()));
+  } else {
+    AddLine(L"You: " + cmd, sf::Color::Green);
+  }
 }

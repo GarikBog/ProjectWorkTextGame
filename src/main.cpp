@@ -1,11 +1,16 @@
 ﻿
 
+#include <iostream>
+
 #include "Basic/game_state.h"
-
 int main() {
-  GameState& gs = GameState::GetGameState();
+  try {
+    GameState& gs = GameState::GetGameState();
+    gs.StartGame();
 
-  gs.StartGame();
+  } catch (const std::exception& ex) {
+    std::cout << '\n' << ex.what() << '\n';
+  }
 
   return 0;
 }

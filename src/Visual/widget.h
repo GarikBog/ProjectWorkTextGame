@@ -4,7 +4,6 @@
 
 #include "icon.h"
 
-
 class Widget {
  public:
   void SetPos(const std::pair<float, float> pos);
@@ -33,7 +32,7 @@ class Widget {
 
   // Tech & other
   virtual void Draw();
-  virtual bool Click(const sf::Vector2i& mouse_pos) = 0;
+  virtual void SetVisibility(bool is_visible_now);
 
   Widget(sf::RenderWindow& window, const std::pair<float, float> pos = {0, 0},
          const std::pair<int, int> scale = {0, 0},
@@ -42,7 +41,12 @@ class Widget {
   Widget(sf::RenderWindow& window, Icon* icon = nullptr,
          const std::pair<float, float> pos = {0, 0},
          const std::pair<int, int> scale = {0, 0});
-  ~Widget();
+  virtual ~Widget();
+
+  virtual void SetBackgroundColor(const sf::Color& color);
+  virtual void ClearBackgroundColor();
+  virtual void SetOutlineColor(const sf::Color& color);
+  virtual void SetOutlineThickness(float thickness);
 
  protected:
   // position
@@ -52,6 +56,7 @@ class Widget {
   int width_ = 0, height_ = 0;
 
   bool self_made_icon_ = false;
+  bool is_visible_ = false;
 
   Icon* icon_ = nullptr;
 
@@ -59,9 +64,11 @@ class Widget {
 
   sf::RenderWindow& window_;
 
+  sf::RectangleShape background_;
+  bool use_background_ = false;
+
   void UpdateScale();
   bool CheckMouseBorders(const sf::Vector2i& mouse_pos);
 };
-
 
 #endif

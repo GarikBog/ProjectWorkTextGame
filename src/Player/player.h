@@ -1,9 +1,14 @@
 #ifndef PLAYER
 #define PLAYER
 
+#include "../Basic/stats.h"
 
+class Player {
+ public:
+  Player();
+  Stats& GetStats() { return stats; }
 
-
-
-class Player {};
-#endif // !PLAYER
+ private:
+  Stats stats;
+};
+#endif  // !PLAYER

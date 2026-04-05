@@ -1,12 +1,10 @@
 #ifndef ICON
 #define ICON
 
-
-
 #ifndef SFML_GRAPHICS
 #define SFML_GRAPHICS
 #include <SFML/Graphics.hpp>
-#endif // !
+#endif  // !
 
 class Icon {
  public:
@@ -25,6 +23,5 @@ class Icon {
 
   sf::IntRect texture_rectangle_;
 };
-
 
 #endif

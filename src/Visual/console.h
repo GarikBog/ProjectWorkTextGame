@@ -1,9 +1,6 @@
 #ifndef CONSOLE
 #define CONSOLE
 
-
-
-
 #include "widget.h"
 
 #ifndef DEQUE
@@ -25,7 +22,7 @@ class Console : public Widget {
  public:
   // Constructor
   Console(sf::RenderWindow& window, const std::pair<float, float> pos = {0, 0},
-          const std::pair<int, int> scale = {800, 600},
+          const std::pair<int, int> scale = {0, 0},
           const std::string texture_file = "",
           const sf::IntRect texture_rectangle = {0, 0, 0, 0});
 
@@ -34,7 +31,6 @@ class Console : public Widget {
   void Log(const std::wstring& message, sf::Color color = sf::Color::White);
   void Update();
   void Draw() override;
-  bool Click(const sf::Vector2i& mouse_pos) override;
   void HandleEvent(const sf::Event& event);
 
  private:
@@ -46,7 +42,7 @@ class Console : public Widget {
   std::wstring input_text_;
 
   // Visual settings
-  const int kFontSize_ = 32;
+  const int kFontSize_ = 26;
   const float kLineHeight_ = 34.0f;
   const float kLeftMargin_ = 75.0f;
   const float kRightMargin_ = 70.0f;
@@ -64,7 +60,6 @@ class Console : public Widget {
   sf::RectangleShape input_box_;
   sf::Text input_display_;
 
-  // Cache for optimization
   std::vector<sf::Text> text_cache_;
   bool need_rebuild_ = true;
 
@@ -84,4 +79,4 @@ class Console : public Widget {
   std::string WStringToString(const std::wstring& wstr);
 };
 
-#endif 
+#endif
