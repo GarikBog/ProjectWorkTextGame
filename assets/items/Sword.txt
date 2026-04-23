@@ -1,0 +1,4 @@
+NAME Sword
+TEXTURE /textures/items/Sword.png
+TEXTURE_RECT 0 0 225 225
+DAMAGE 10

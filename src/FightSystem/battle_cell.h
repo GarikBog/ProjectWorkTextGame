@@ -25,6 +25,7 @@ class BattleCell : public IButtonOwner {
   void ButtonIsPressed(Button* button) override;
   Button& GetButton();
   void Draw();
+  void SetVisibility(bool is_visible_now);
   void SetMovementController(MovementController* controller);
 
  private:
@@ -34,6 +35,7 @@ class BattleCell : public IButtonOwner {
 
   sf::Color original_color_;
   bool has_highlight_;
+  bool is_visible_;
 
   MovementController* movement_controller_;
 };

@@ -1,0 +1,7 @@
+/textures/body/human_body.png
+Torso 100 98 95 204 251
+Head 25 110 0 180 95
+LeftHand 50 0 95 98 251
+RightHand 50 302 95 98 251
+LeftLeg 50 30 345 170 255
+RightLeg 50 200 345 170 255

@@ -1,0 +1,9 @@
+/textures/body/serafim.png
+Torso 50 175 270 50 100
+LeftDownWing 50 85 335 115 265
+RightDownWing 50 200 335 115 265
+LeftTopWing 50 115 0 85 270
+RightTopWing 50 200 0 85 270
+LeftMiddleWing 50 0 208 175 145
+RightMiddleWing 50 225 208 175 145
+

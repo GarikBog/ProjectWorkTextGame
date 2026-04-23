@@ -75,10 +75,13 @@ void Widget::SetHeight(const int height) {
 void Widget::SetIcon(Icon* icon) {
   if (!icon) return;
 
+  if (self_made_icon_) delete icon_;
   icon_ = icon;
 
   sprite_.setTexture(icon_->GetTexture());
   sprite_.setTextureRect(icon_->GetTextureRect());
+
+  SetScale(width_, height_);
 }
 
 void Widget::SetTexture(const std::string texture_file) {
@@ -181,4 +184,104 @@ void Widget::SetOutlineThickness(float thickness) {
   if (use_background_) {
     background_.setOutlineThickness(thickness);
   }
+}
+
+// Вспомогательный метод для копирования состояния
+void Widget::CopyFrom(const Widget& other) {
+  x_ = other.x_;
+  y_ = other.y_;
+  width_ = other.width_;
+  height_ = other.height_;
+  is_visible_ = other.is_visible_;
+  sprite_ = other.sprite_;  // копирование спрайта (текстура shared?)
+  use_background_ = other.use_background_;
+  background_ = other.background_;
+
+  // Копирование иконки
+  if (other.self_made_icon_ && other.icon_) {
+    // Создаём глубокую копию иконки, если она была создана самим виджетом
+    icon_ = new Icon(*other.icon_);  // требуется конструктор копирования в Icon
+    self_made_icon_ = true;
+  } else {
+    // Иконка принадлежит внешнему владельцу – просто копируем указатель
+    icon_ = other.icon_;
+    self_made_icon_ = false;
+  }
+
+  // Обновляем спрайт, если иконка изменилась
+  if (icon_) {
+    sprite_.setTexture(icon_->GetTexture());
+    sprite_.setTextureRect(icon_->GetTextureRect());
+  }
+}
+
+// Конструктор копирования
+Widget::Widget(const Widget& other)
+    : window_(
+          other.window_)  // инициализация ссылки (привязываемся к тому же окну)
+{
+  CopyFrom(other);
+}
+
+// Оператор присваивания
+Widget& Widget::operator=(const Widget& other) {
+  if (this == &other) return *this;
+
+  // Освобождаем ресурсы текущего объекта
+  if (self_made_icon_) {
+    delete icon_;
+    icon_ = nullptr;
+    self_made_icon_ = false;
+  }
+
+  // Копируем состояние (кроме ссылки window_, которая уже привязана)
+  CopyFrom(other);
+
+  return *this;
+}
+
+// widget.cpp
+
+// Конструктор перемещения
+Widget::Widget(Widget&& other) noexcept
+    : window_(other.window_)  // ссылка – привязываемся к тому же окну
+      ,
+      x_(std::exchange(other.x_, 0)),
+      y_(std::exchange(other.y_, 0)),
+      width_(std::exchange(other.width_, 0)),
+      height_(std::exchange(other.height_, 0)),
+      self_made_icon_(std::exchange(other.self_made_icon_, false)),
+      icon_(std::exchange(other.icon_, nullptr)),
+      sprite_(std::move(other.sprite_)),
+      background_(std::move(other.background_)),
+      use_background_(std::exchange(other.use_background_, false)),
+      is_visible_(std::exchange(other.is_visible_, false)) {
+  // После перемещения other больше не владеет ресурсами
+  // и не должен их удалять в деструкторе.
+}
+
+// Оператор присваивания с перемещением
+Widget& Widget::operator=(Widget&& other) noexcept {
+  if (this == &other) return *this;
+
+  // Освобождаем текущие ресурсы
+  if (self_made_icon_) {
+    delete icon_;
+  }
+
+  // Перемещаем данные
+  x_ = std::exchange(other.x_, 0);
+  y_ = std::exchange(other.y_, 0);
+  width_ = std::exchange(other.width_, 0);
+  height_ = std::exchange(other.height_, 0);
+  self_made_icon_ = std::exchange(other.self_made_icon_, false);
+  icon_ = std::exchange(other.icon_, nullptr);
+  sprite_ = std::move(other.sprite_);
+  background_ = std::move(other.background_);
+  use_background_ = std::exchange(other.use_background_, false);
+  is_visible_ = std::exchange(other.is_visible_, false);
+
+  // Ссылка window_ уже привязана к текущему объекту – ничего не делаем
+
+  return *this;
 }

@@ -3,40 +3,12 @@
 #define CONSOLE
 #endif
 
-#ifndef WINDOWS
-#include <windows.h>
-#define WINDOWS
-#endif
-
 #ifndef IOSTREAM
 #include <iostream>
 #define IOSTREAM
 #endif
 
 #include "../Basic/game_state.h"
-
-std::wstring Console::StringToWString(const std::string& str) {
-  if (str.empty()) return L"";
-
-  int size = MultiByteToWideChar(CP_ACP, 0, str.c_str(),
-                                 static_cast<int>(str.size()), NULL, 0);
-  std::wstring result(size, 0);
-  MultiByteToWideChar(CP_ACP, 0, str.c_str(), static_cast<int>(str.size()),
-                      &result[0], size);
-  return result;
-}
-
-std::string Console::WStringToString(const std::wstring& wstr) {
-  if (wstr.empty()) return "";
-
-  int size =
-      WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(),
-                          static_cast<int>(wstr.size()), NULL, 0, NULL, NULL);
-  std::string result(size, 0);
-  WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), static_cast<int>(wstr.size()),
-                      &result[0], size, NULL, NULL);
-  return result;
-}
 
 // Constructor
 Console::Console(sf::RenderWindow& window, const std::pair<float, float> pos,
@@ -109,32 +81,31 @@ void Console::HandleEvent(const sf::Event& event) {
         input_text_ += static_cast<wchar_t>(event.text.unicode);
       }
     }
-    // Backspace
+
     else if (event.text.unicode == 8) {
       if (!input_text_.empty()) {
         input_text_.pop_back();
       }
     }
-    // Enter
+
     else if (event.text.unicode == 13) {
       ProcessCommand(input_text_);
       input_text_.clear();
       ScrollToBottom();
     }
   } else if (event.type == sf::Event::KeyPressed) {
-    // Page Up
     if (event.key.code == sf::Keyboard::PageUp) {
       ScrollUp(visible_lines_);
     }
-    // Page Down
+
     else if (event.key.code == sf::Keyboard::PageDown) {
       ScrollDown(visible_lines_);
     }
-    // Home
+
     else if (event.key.code == sf::Keyboard::Home) {
       ScrollToTop();
     }
-    // End
+
     else if (event.key.code == sf::Keyboard::End) {
       ScrollToBottom();
     }
@@ -246,8 +217,16 @@ void Console::ProcessCommand(const std::wstring& cmd) {
 
   if (cmd == L"get player stats") {
     AddLine(L"Player Stats:");
-    AddLine(StringToWString(
-        GameState::GetGameState().GetPlayer().GetStats().GetStatsInString()));
+    AddLine(StringToWString(GameState::GetGameState()
+                                .GetPlayer()
+                                .GetBattleStats()
+                                .GetStatsInString()));
+  } else if (cmd == L"refresh turn") {
+    GameState::GetGameState().RefreshTurn();
+    AddLine(L"Turn refreshed! Player stamina restored.", sf::Color::Green);
+  } else if (cmd == L"end turn") {
+    GameState::GetGameState().EndTurn();
+    AddLine(L"Turn ended. Enemy turn begins.", sf::Color::Cyan);
   } else {
     AddLine(L"You: " + cmd, sf::Color::Green);
   }

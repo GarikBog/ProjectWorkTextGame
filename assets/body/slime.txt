@@ -1,0 +1,2 @@
+/textures/body/slime.png
+Torso 50 20 84 360 432

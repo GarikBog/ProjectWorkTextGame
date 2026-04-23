@@ -1,0 +1,4 @@
+NAME Stick
+TEXTURE /textures/items/Stick.png
+TEXTURE_RECT 0 0 632 638
+DAMAGE 7

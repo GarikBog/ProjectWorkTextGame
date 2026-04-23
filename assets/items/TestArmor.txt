@@ -1,0 +1,4 @@
+NAME TestArmor
+TEXTURE /textures/items/dospehi.jpg
+TEXTURE_RECT 0 0 360 360
+DEFENSE 0.2

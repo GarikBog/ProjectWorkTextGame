@@ -16,6 +16,7 @@ class Icon {
 
   Icon(const std::string texture_file = "",
        const sf::IntRect rect = {0, 0, 0, 0});
+  Icon& operator=(Icon& other);
 
  protected:
  private:

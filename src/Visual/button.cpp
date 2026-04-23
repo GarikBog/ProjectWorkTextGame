@@ -25,6 +25,13 @@ Button::Button(IButtonOwner* owner, sf::RenderWindow& window, Icon* icon,
     : owner_(*owner), Widget(window, icon, pos, scale) {
   SetVisibility(true);
 }
+// Конструктор копирования
+Button::Button(const Button& other) : Widget(other), owner_(other.owner_) {
+  SetVisibility(is_visible_);
+}
+
+// Оператор присваивания
+
 Button::~Button() {
   GameState::GetGameState().ButtonChangeVisibility(this, false);
 }

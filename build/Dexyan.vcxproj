@@ -94,14 +94,12 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <MinimalRebuild>
-      </MinimalRebuild>
+      <MinimalRebuild></MinimalRebuild>
       <Optimization>Disabled</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <SupportJustMyCode>
-      </SupportJustMyCode>
+      <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;ASSETS_PATH="E:/projects/c++/Dexyan/assets";SFML_STATIC;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
@@ -143,14 +141,12 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <MinimalRebuild>
-      </MinimalRebuild>
+      <MinimalRebuild></MinimalRebuild>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <SupportJustMyCode>
-      </SupportJustMyCode>
+      <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ASSETS_PATH="E:/projects/c++/Dexyan/assets";SFML_STATIC;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
@@ -194,14 +190,12 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <MinimalRebuild>
-      </MinimalRebuild>
+      <MinimalRebuild></MinimalRebuild>
       <Optimization>MinSpace</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <SupportJustMyCode>
-      </SupportJustMyCode>
+      <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ASSETS_PATH="E:/projects/c++/Dexyan/assets";SFML_STATIC;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
@@ -246,14 +240,12 @@
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <MinimalRebuild>
-      </MinimalRebuild>
+      <MinimalRebuild></MinimalRebuild>
       <Optimization>MaxSpeed</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <SupportJustMyCode>
-      </SupportJustMyCode>
+      <SupportJustMyCode></SupportJustMyCode>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ASSETS_PATH="E:/projects/c++/Dexyan/assets";SFML_STATIC;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
@@ -344,14 +336,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\Basic\stats.cpp" />
-    <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\big_event.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\game_state.cpp" />
-    <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\item.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\object_fabric.cpp" />
-    <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\small_event.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\stats.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\battle_cell.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\battle_field.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\body_part.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\character.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\humanoid_character.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\lootable_object.cpp" />
@@ -360,24 +350,25 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\object.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\path_data.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\player_character.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Items\item.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Items\item_fabric.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Player\inventory.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Player\player.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\body_part_widget.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\button.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\character_info_widget.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\console.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\icon.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\ui_inventory.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\widget.cpp" />
-    <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\widget_fabric.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\main.cpp" />
-    <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\big_event.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\game_state.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\i_button_owner.h" />
-    <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\item.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\object_fabric.h" />
-    <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\small_event.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\stats.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\battle_cell.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\battle_field.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\body_part.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\character.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\humanoid_character.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\lootable_object.h" />
@@ -386,14 +377,17 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\object.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\path_data.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\player_character.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Items\item.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Items\item_fabric.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Player\inventory.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Player\player.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\body_part_widget.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\button.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\character_info_widget.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\console.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\icon.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\ui_inventory.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\widget.h" />
-    <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\widget_fabric.h" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

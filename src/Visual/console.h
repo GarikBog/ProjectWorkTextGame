@@ -73,10 +73,6 @@ class Console : public Widget {
   void ScrollToBottom();
   void ScrollToTop();
   void ProcessCommand(const std::wstring& cmd);
-
-  // Helpers for string conversion
-  std::wstring StringToWString(const std::string& str);
-  std::string WStringToString(const std::wstring& wstr);
 };
 
 #endif

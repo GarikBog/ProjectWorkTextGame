@@ -41,6 +41,10 @@ class Widget {
   Widget(sf::RenderWindow& window, Icon* icon = nullptr,
          const std::pair<float, float> pos = {0, 0},
          const std::pair<int, int> scale = {0, 0});
+  Widget(const Widget& other);
+  Widget(Widget&& other) noexcept;
+  Widget& operator=(const Widget& other);
+  Widget& operator=(Widget&& other) noexcept;
   virtual ~Widget();
 
   virtual void SetBackgroundColor(const sf::Color& color);
@@ -69,6 +73,9 @@ class Widget {
 
   void UpdateScale();
   bool CheckMouseBorders(const sf::Vector2i& mouse_pos);
+
+ private:
+  void CopyFrom(const Widget& other);
 };
 
 #endif

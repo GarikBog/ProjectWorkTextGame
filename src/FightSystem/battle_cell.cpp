@@ -30,7 +30,9 @@ bool BattleCell::ObjectMovesFromCell(Object* object) {
 
 Object* BattleCell::GetObjectOnCell() { return tmp_object_on_cell_; }
 
-void BattleCell::Draw() { cell_button_.Draw(); }
+void BattleCell::Draw() {
+  if (is_visible_) cell_button_.Draw();
+}
 
 BattleCell::BattleCell(Object& basic_object, Object* tmp_object,
                        sf::RenderWindow& window,
@@ -40,7 +42,8 @@ BattleCell::BattleCell(Object& basic_object, Object* tmp_object,
       cell_button_(this, window, basic_object.GetIcon(), pos, scale),
       basic_object_on_cell_(basic_object),
       has_highlight_(false),
-      movement_controller_(nullptr) {
+      movement_controller_(nullptr),
+      is_visible_(true) {
   if (tmp_object_on_cell_) cell_button_.SetIcon(tmp_object_on_cell_->GetIcon());
 }
 
@@ -69,4 +72,8 @@ void BattleCell::ClearHighlight() {
 
 void BattleCell::SetMovementController(MovementController* controller) {
   movement_controller_ = controller;
+}
+
+void BattleCell::SetVisibility(bool is_visible_now) {
+  is_visible_ = is_visible_now;
 }

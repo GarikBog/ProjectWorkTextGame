@@ -1,0 +1,4 @@
+NAME MaskOfMadness
+TEXTURE /textures/items/MOM.jpg
+TEXTURE_RECT 0 0 197 143
+DEFENSE 0.2
