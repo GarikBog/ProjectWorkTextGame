@@ -1,0 +1,4 @@
+DESCRIPTION First
+BACKGROUND Tavern
+
+ACTION /actions/to_town.txt

@@ -1,0 +1,4 @@
+DESCRIPTION Second
+BACKGROUND Town
+
+ACTION /actions/to_forest.txt

@@ -1,11 +1,19 @@
-#include "game_state.h"
+﻿#include "game_state.h"
 
+#include <fstream>
 #include <iostream>
 
 #include "../FightSystem/battle_field.h"
 #include "../FightSystem/movement_controller.h"
+#include "../Story/small_event.h"
+#include "../Story/storyteller.h"
 #include "../Visual/button.h"
 #include "SFML/Graphics.hpp"
+
+static inline std::map<std::string, std::string> buttons_paths = {
+    {"battle", "/textures/buttons/Battle.png"},
+    {"inv", "/textures/buttons/Inventory.png"},
+    {"background", "/textures/buttons/Background.png"}};
 
 std::wstring StringToWString(const std::string& str) {
   if (str.empty()) return L"";
@@ -30,41 +38,71 @@ std::string WStringToString(const std::wstring& wstr) {
   return result;
 }
 
+std::string ReadLineFromFile(std::ifstream& input) {
+  std::string line;
+  if (!input.is_open()) return line;
+
+  char ch;
+  while (input.get(ch)) {
+    if (ch == '\n') {
+      break;
+    }
+    if (ch == '\r') {
+      if (input.peek() == '\n') {
+        input.get(ch);
+      }
+      break;
+    }
+    line += ch;
+  }
+
+  std::wstring wide_line = StringToWString(line);
+  return WStringToString(wide_line);
+}
+
 void GameState::StartGame() {
-  backgrounds_images_["BattleFullSwing"] =
-      new Icon(ASSETS_PATH "/textures/UI/BattleFullSwing.png",
-               sf::IntRect(0, 0, 900, 1020));
-  backgrounds_images_["BattleWon"] = new Icon(
-      ASSETS_PATH "/textures/UI/BattleWon.png", sf::IntRect(0, 0, 900, 1020));
-  backgrounds_images_["PlayerDead"] = new Icon(
-      ASSETS_PATH "/textures/UI/YouDead.png", sf::IntRect(0, 0, 900, 1020));
+  // LOAD BACKGROUNDS
+  {
+    backgrounds_images_["BattleFullSwing"] =
+        new Icon(ASSETS_PATH "/textures/UI/BattleFullSwing.png",
+                 sf::IntRect(0, 0, 900, 1020));
+    backgrounds_images_["BattleWon"] = new Icon(
+        ASSETS_PATH "/textures/UI/BattleWon.png", sf::IntRect(0, 0, 900, 1020));
+    backgrounds_images_["PlayerDead"] = new Icon(
+        ASSETS_PATH "/textures/UI/YouDead.png", sf::IntRect(0, 0, 900, 1020));
+    backgrounds_images_["Forest"] = new Icon(
+        ASSETS_PATH "/textures/UI/forest.png", sf::IntRect(0, 0, 900, 1020));
+    backgrounds_images_["Town"] = new Icon(ASSETS_PATH "/textures/UI/town.png",
+                                           sf::IntRect(0, 0, 900, 1020));
+    backgrounds_images_["Tavern"] = new Icon(
+        ASSETS_PATH "/textures/UI/tavern.png", sf::IntRect(0, 0, 900, 1020));
+  }  // Load Backgounds
 
   ui_inventory_ = new UIInventory(window_, {150, 90},
                                   ASSETS_PATH "/textures/ui/inventory.png",
                                   sf::IntRect(0, 0, 900, 900));
-
-  current_battle_ = new BattleField(
-      window_, ASSETS_PATH "/battles/test.txt", std::pair(195, 31),
-      ASSETS_PATH "/textures/UI/battle.png", sf::IntRect(0, 0, 810, 810));
-  movement_controller_ = new MovementController(current_battle_);
-  current_battle_->SetMovementController(movement_controller_);
-
   ui_inventory_->SetVisibility(false);
 
-  current_battle_button_ = new Button(
-      this, window_, std::pair(kBattleButtonX_, kBattleButtonY_),
-      std::pair(kSwitchModesButtonW_, kSwitchModesButtonH_),
-      ASSETS_PATH "/textures/buttons/Battle.png", sf::IntRect(0, 0, 100, 100));
-  ui_inventory_button_ = new Button(
-      this, window_, std::pair(kInventoryButtonX_, kInventoryButtonY_),
-      std::pair(kSwitchModesButtonW_, kSwitchModesButtonH_),
-      ASSETS_PATH "/textures/buttons/Inventory.png",
-      sf::IntRect(0, 0, 100, 100));
-  background_button_ = new Button(
-      this, window_, std::pair(kBackgroundButtonX_, kBackgroundButtonY_),
-      std::pair(kSwitchModesButtonW_, kSwitchModesButtonH_),
-      ASSETS_PATH "/textures/buttons/Background.png",
-      sf::IntRect(0, 0, 100, 100));
+  // CREATING BUTTONS
+  {
+    current_battle_button_ = new Button(
+        this, window_, std::pair(kBattleButtonX_, kBattleButtonY_),
+        std::pair(kSwitchModesButtonW_, kSwitchModesButtonH_),
+        ASSETS_PATH + buttons_paths.at("battle"), sf::IntRect(0, 0, 100, 100));
+    ui_inventory_button_ = new Button(
+        this, window_, std::pair(kInventoryButtonX_, kInventoryButtonY_),
+        std::pair(kSwitchModesButtonW_, kSwitchModesButtonH_),
+        ASSETS_PATH + buttons_paths.at("inv"), sf::IntRect(0, 0, 100, 100));
+    background_button_ = new Button(
+        this, window_, std::pair(kBackgroundButtonX_, kBackgroundButtonY_),
+        std::pair(kSwitchModesButtonW_, kSwitchModesButtonH_),
+        ASSETS_PATH + buttons_paths.at("background"),
+        sf::IntRect(0, 0, 100, 100));
+  }
+
+  storyteller_ = new StoryTeller();
+  storyteller_->LoadStoriesFromFile(ASSETS_PATH
+                                    "/storytellers/all_stories.txt");
 
   sf::Clock clock;
 
@@ -121,6 +159,10 @@ sf::RenderWindow& GameState::GetWindow() { return window_; }
 
 Player& GameState::GetPlayer() { return player_; }
 
+PlayerBehavior& GameState::GetPlayerBehavior() { return player_behavior_; }
+
+BigEvent* GameState::GetCurrentBigEvent() { return current_event_; }
+
 BattleField* GameState::GetCurrentBattle() { return current_battle_; }
 
 MovementController* GameState::GetMovementController() {
@@ -138,7 +180,7 @@ void GameState::Click() {
 
 GameState::GameState()
     : window_(sf::VideoMode(kWindowWidth_, kWindowHeight_), "Dexyan",
-              sf::Style::Fullscreen),  // change to fullscreen
+              sf::Style::Default),  // change to fullscreen
       console_(window_, {kWindowWidth_ * 0.5625, 0},
                {kWindowWidth_ * 0.4375, kWindowHeight_},
                ASSETS_PATH "/textures/UI/console.jpg", {0, 0, 960, 1080}),
@@ -186,21 +228,49 @@ void GameState::LoadBackground(std::string name) {
 
     background_.SetIcon(icon);
   } catch (const std::out_of_range& e) {
-    std::cout << "���� �� ������: " << e.what() << std::endl;
+    std::cout << "Ключ не найден: " << e.what() << std::endl;
   }
+}
+
+void GameState::LoadNextBigEvent() { load_next_big_event = true; }
+
+void GameState::StartBattle(std::string battle_file_path) {
+  load_new_battle = true;
+  new_battle_path = battle_file_path;
+
+  if (current_event_) current_event_->Stop();
+
+  console_.Log("Начинается бой...");
 }
 
 void GameState::Update() {
   console_.Update();
-  if (movement_controller_ != nullptr) {
-    movement_controller_->Update(world_delta_time_);
-  }
+  if (movement_controller_) movement_controller_->Update(world_delta_time_);
+
   if (current_battle_) {
     current_battle_->Update();
-    if (current_battle_->IsBattleEnded()) {
-      CleanupBattle();
-    }
+    if (current_battle_->IsBattleEnded()) CleanupBattle();
   }
+
+  if (load_new_battle) {
+    current_battle_ = new BattleField(
+        window_, new_battle_path, {kBackgroundX_, kBackgroundY_},
+        ASSETS_PATH "/textures/UI/battle.png", {0, 0, 810, 810});
+    movement_controller_ = new MovementController(current_battle_);
+    current_battle_->SetMovementController(movement_controller_);
+    load_new_battle = false;
+    HideAll();
+    current_battle_->SetVisibility(true);
+  }
+
+  if (load_next_big_event) {
+    delete current_event_;
+
+    current_event_ = new BigEvent(storyteller_->GetNextBigEvent());
+    current_event_->Start();
+    load_next_big_event = false;
+  }
+  if (current_event_) current_event_->Update();
 }
 
 void GameState::Draw() {
@@ -240,7 +310,7 @@ void GameState::EndTurn() {
 
 void GameState::CleanupBattle() {
   if (player_.IsAlive()) {
-    LoadBackground("BattleWon");
+    if (current_event_) current_event_->Start();
   } else {
     LoadBackground("PlayerDead");
   }

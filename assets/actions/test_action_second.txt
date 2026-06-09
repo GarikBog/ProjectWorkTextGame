@@ -1,0 +1,13 @@
+DESCRIPTION Return To Town
+OUTCOME /small_events/town.txt
+BATTLE /battles/test.txt
+
+CONDITION STATS_MORE health 5
+
+BEHAVIOR HOSTILITY 0.2
+BEHAVIOR HONESTY -0.5
+BEHAVIOR ENRICHMENT 0.3
+
+WORD Return
+WORD Town
+WORD Return To Town

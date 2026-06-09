@@ -112,15 +112,16 @@ bool Inventory::DoesHasItem(Item* item) {
           (FindItemPosInInventory(item) != -1));
 }
 
+// try to find find item in ALL slots
 bool Inventory::DoesHasItem(std::string name) {
   if (item_in_hand_ && item_in_hand_->GetName() == name) return true;
   if (armor_slot_ && armor_slot_->GetName() == name) return true;
   if (helmet_slot_ && helmet_slot_->GetName() == name) return true;
 
   for (int i = 0; i < BELT_COUNT; ++i)
-    if (belt_[i]->GetName() == name) return true;
+    if (belt_[i] && belt_[i]->GetName() == name) return true;
   for (int i = 0; i < inventory_.size(); ++i)
-    if (inventory_[i]->GetName() == name) return true;
+    if (inventory_[i] && inventory_[i]->GetName() == name) return true;
 
   return false;
 }

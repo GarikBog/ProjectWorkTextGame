@@ -75,7 +75,10 @@ void Widget::SetHeight(const int height) {
 void Widget::SetIcon(Icon* icon) {
   if (!icon) return;
 
-  if (self_made_icon_) delete icon_;
+  if (self_made_icon_) {
+    delete icon_;
+    self_made_icon_ = false;
+  }
   icon_ = icon;
 
   sprite_.setTexture(icon_->GetTexture());

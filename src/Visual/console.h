@@ -32,6 +32,7 @@ class Console : public Widget {
   void Update();
   void Draw() override;
   void HandleEvent(const sf::Event& event);
+  int GetMaxInputLenght() const;
 
  private:
   // Font

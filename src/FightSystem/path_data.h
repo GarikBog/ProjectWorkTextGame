@@ -1,5 +1,5 @@
-#ifndef PATH_DATA_H_
-#define PATH_DATA_H_
+#ifndef PATH_DATA_H
+#define PATH_DATA_H
 
 #include <vector>
 

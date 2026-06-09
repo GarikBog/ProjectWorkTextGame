@@ -20,6 +20,8 @@ class Player {
 
   void Kill();
 
+  float GetStatByString(std::string stat_name);
+
  private:
   Inventory inventory_;
   BattleStats battle_stats_;

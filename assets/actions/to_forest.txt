@@ -1,0 +1,5 @@
+DESCRIPTION Go to Forest
+OUTCOME END
+
+WORD Forest
+WORD Go

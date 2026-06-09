@@ -1,7 +1,7 @@
 #include "battle_cell.h"
 
 #include "../Basic/game_state.h"
-#include "movement_controller.h"  // Добавить
+#include "movement_controller.h"
 
 BattleCell::~BattleCell() {}
 

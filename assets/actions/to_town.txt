@@ -1,0 +1,6 @@
+DESCRIPTION Go out to town
+OUTCOME END
+
+WORD Out
+WORD Town
+WORD Go

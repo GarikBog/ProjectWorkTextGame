@@ -1,0 +1,4 @@
+DESCRIPTION Just Quit
+BACKGROUND Town
+
+ACTION /actions/quit.txt

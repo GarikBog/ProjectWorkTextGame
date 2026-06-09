@@ -9,8 +9,10 @@
 #include <vector>
 
 #include "../Player/player.h"
+#include "../Story/big_event.h"
 #include "../Visual/console.h"
 #include "../Visual/ui_inventory.h"
+#include "player_behavior.h"
 
 std::wstring StringToWString(const std::string& str);
 
@@ -21,6 +23,8 @@ class MovementController;
 class Button;
 
 class BattleField;
+
+class StoryTeller;
 
 class GameState : public IButtonOwner {
  public:
@@ -34,6 +38,8 @@ class GameState : public IButtonOwner {
   sf::RenderWindow& GetWindow();
 
   Player& GetPlayer();
+  PlayerBehavior& GetPlayerBehavior();
+  BigEvent* GetCurrentBigEvent();
   BattleField* GetCurrentBattle();
   MovementController* GetMovementController();
 
@@ -50,6 +56,10 @@ class GameState : public IButtonOwner {
   bool IsPlayerAlive() const;
 
   void LoadBackground(std::string name);
+
+  void LoadNextBigEvent();
+
+  void StartBattle(std::string battle_file_path);
 
  private:
   static inline const int kBattleButtonX_ = 5;
@@ -75,6 +85,9 @@ class GameState : public IButtonOwner {
   const unsigned int kWindowHeight_ = 1080;
 
   bool game_is_run_ = true;
+  bool load_next_big_event = true;
+  bool load_new_battle = false;
+  std::string new_battle_path;
 
   sf::RenderWindow window_;
   Console console_;
@@ -92,6 +105,9 @@ class GameState : public IButtonOwner {
   std::map<std::string, Icon*> backgrounds_images_;
 
   BattleField* current_battle_ = nullptr;
+  BigEvent* current_event_ = nullptr;
+  PlayerBehavior player_behavior_;
+  StoryTeller* storyteller_;
 
   void Update();
   void Draw();

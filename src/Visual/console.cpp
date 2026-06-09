@@ -120,6 +120,8 @@ void Console::HandleEvent(const sf::Event& event) {
   }
 }
 
+int Console::GetMaxInputLenght() const { return kMaxInputLength_; }
+
 // Private methods
 void Console::UpdateLayout() {
   float width = static_cast<float>(GetWidth());
@@ -215,19 +217,6 @@ void Console::ScrollToTop() {
 void Console::ProcessCommand(const std::wstring& cmd) {
   if (cmd.empty()) return;
 
-  if (cmd == L"get player stats") {
-    AddLine(L"Player Stats:");
-    AddLine(StringToWString(GameState::GetGameState()
-                                .GetPlayer()
-                                .GetBattleStats()
-                                .GetStatsInString()));
-  } else if (cmd == L"refresh turn") {
-    GameState::GetGameState().RefreshTurn();
-    AddLine(L"Turn refreshed! Player stamina restored.", sf::Color::Green);
-  } else if (cmd == L"end turn") {
-    GameState::GetGameState().EndTurn();
-    AddLine(L"Turn ended. Enemy turn begins.", sf::Color::Cyan);
-  } else {
-    AddLine(L"You: " + cmd, sf::Color::Green);
-  }
+  BigEvent* current_b_event = GameState::GetGameState().GetCurrentBigEvent();
+  if (current_b_event) current_b_event->PlayerWriteWord(WStringToString(cmd));
 }

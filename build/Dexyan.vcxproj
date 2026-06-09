@@ -338,6 +338,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\game_state.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\object_fabric.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\player_behavior.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\stats.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\battle_cell.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\FightSystem\battle_field.cpp" />
@@ -354,6 +355,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="E:\projects\c++\Dexyan\src\Items\item_fabric.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Player\inventory.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Player\player.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Story\action.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Story\big_event.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Story\small_event.cpp" />
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Story\storyteller.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\body_part_widget.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\button.cpp" />
     <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\character_info_widget.cpp" />
@@ -365,6 +370,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\game_state.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\i_button_owner.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\object_fabric.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\player_behavior.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\stats.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\battle_cell.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\FightSystem\battle_field.h" />
@@ -381,6 +387,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="E:\projects\c++\Dexyan\src\Items\item_fabric.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Player\inventory.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Player\player.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Story\action.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Story\big_event.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Story\small_event.h" />
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Story\storyteller.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\body_part_widget.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\button.h" />
     <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\character_info_widget.h" />

@@ -7,6 +7,9 @@
     <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\object_fabric.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\player_behavior.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="E:\projects\c++\Dexyan\src\Basic\stats.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -55,6 +58,18 @@
     <ClCompile Include="E:\projects\c++\Dexyan\src\Player\player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Story\action.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Story\big_event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Story\small_event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\projects\c++\Dexyan\src\Story\storyteller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="E:\projects\c++\Dexyan\src\Visual\body_part_widget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -88,6 +103,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\object_fabric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\player_behavior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="E:\projects\c++\Dexyan\src\Basic\stats.h">
@@ -136,6 +154,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="E:\projects\c++\Dexyan\src\Player\player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Story\action.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Story\big_event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Story\small_event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\projects\c++\Dexyan\src\Story\storyteller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="E:\projects\c++\Dexyan\src\Visual\body_part_widget.h">

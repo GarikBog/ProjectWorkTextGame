@@ -1,0 +1,4 @@
+DESCRIPTION Third
+BACKGROUND Forest
+
+ACTION /actions/quit.txt

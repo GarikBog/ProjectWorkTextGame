@@ -1,0 +1,5 @@
+DESCRIPTION Dark Forest
+BACKGROUND Forest
+
+ACTION /actions/test_action_second.txt
+ACTION /actions/quit.txt

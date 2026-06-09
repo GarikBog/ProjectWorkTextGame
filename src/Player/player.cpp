@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <unordered_map>
 
 void Player::SetPlayerCharacter(PlayerCharacter* player_character) {
   if (!player_character) {
@@ -51,3 +52,28 @@ void Player::ChangeDamage(int count) { battle_stats_.damage += count; }
 bool Player::IsAlive() const { return is_alive && battle_stats_.health > 0; }
 
 void Player::Kill() { is_alive = false; }
+
+float Player::GetStatByString(std::string stat_name) {
+  if (stat_name == "stamina")
+    return battle_stats_.stamina;
+  else if (stat_name == "current_stamina")
+    return battle_stats_.current_stamina;
+  else if (stat_name == "health")
+    return battle_stats_.health;
+  else if (stat_name == "max_health")
+    return battle_stats_.max_health;
+  else if (stat_name == "min_attack_range")
+    return battle_stats_.min_attack_range;
+  else if (stat_name == "max_attack_range")
+    return battle_stats_.max_attack_range;
+  else if (stat_name == "damage")
+    return battle_stats_.damage;
+  else if (stat_name == "defensive")
+    return battle_stats_.defensive;
+  else if (stat_name == "attack_count")
+    return battle_stats_.attack_count;
+  else if (stat_name == "max_attack_count")
+    return battle_stats_.max_attack_count;
+
+  return 0.0f;
+}

@@ -11,62 +11,67 @@ Object* ObjectFabric::GetObjectByChar(const char ch) {
   switch (ch) {
       // dexyan
     case ('d'): {
-      auto body_parts = GetBodyPartsFromFile(ASSETS_PATH "/body/human.txt");
-      return new PlayerCharacter(ASSETS_PATH "/textures/objects/pudge.png",
+      auto body_parts =
+          GetBodyPartsFromFile(ASSETS_PATH + (object_body_paths_.at("human")));
+      return new PlayerCharacter(ASSETS_PATH + object_textures_.at("pudge"),
                                  sf::IntRect(0, 0, 800, 800), body_parts);
     }
 
       // enemis NON HUM
     case ('s'): {
-      auto body_parts = GetBodyPartsFromFile(ASSETS_PATH "/body/slime.txt");
-      return new NonHumanoidCharacter(ASSETS_PATH "/textures/objects/slime.png",
-                                      sf::IntRect(0, 0, 800, 800), "Slime",
-                                      body_parts,
-                                      BattleStats(20, 5, 0, 1, 5, 0));
+      auto body_parts =
+          GetBodyPartsFromFile(ASSETS_PATH + (object_body_paths_.at("slime")));
+      return new NonHumanoidCharacter(
+          ASSETS_PATH + object_textures_.at("slime"),
+          sf::IntRect(0, 0, 800, 800), "Slime", body_parts,
+          BattleStats(20, 5, 0, 1, 5, 0));
     }
     case ('a'): {
-      auto body_parts = GetBodyPartsFromFile(ASSETS_PATH "/body/serafim.txt");
+      auto body_parts = GetBodyPartsFromFile(
+          ASSETS_PATH + (object_body_paths_.at("serafim")));
       return new NonHumanoidCharacter(
-          ASSETS_PATH "/textures/objects/serafim.png",
+          ASSETS_PATH + object_textures_.at("serafim"),
           sf::IntRect(0, 0, 800, 800), "Serafim", body_parts,
           BattleStats(150, 1, 0, 4, 10, 0.3));
     }
 
       // enemis HUM
     case ('m'): {
-      auto body_parts = GetBodyPartsFromFile(ASSETS_PATH "/body/human.txt");
-      return new HumanoidCharacter(ASSETS_PATH "/textures/objects/creep.png",
+      auto body_parts =
+          GetBodyPartsFromFile(ASSETS_PATH + (object_body_paths_.at("human")));
+      return new HumanoidCharacter(ASSETS_PATH + object_textures_.at("creep"),
                                    sf::IntRect(0, 0, 800, 800), "Creep",
                                    body_parts,
                                    BattleStats(50, 3, 0, 2, 5, 0.5));
     }
     case ('r'): {
-      auto body_parts = GetBodyPartsFromFile(ASSETS_PATH "/body/human.txt");
+      auto body_parts =
+          GetBodyPartsFromFile(ASSETS_PATH + (object_body_paths_.at("human")));
       return new HumanoidCharacter(
-          ASSETS_PATH "/textures/objects/range_creep.png",
+          ASSETS_PATH + object_textures_.at("range_creep"),
           sf::IntRect(0, 0, 800, 800), "RangeCreep", body_parts,
           BattleStats(50, 5, 3, 5, 5, 0.1));
     }
 
     // objects
     case ('k'):
-      return new Object(ASSETS_PATH "/textures/objects/rock.png",
+      return new Object(ASSETS_PATH + object_textures_.at("rock"),
                         sf::IntRect(0, 0, 800, 800), "rock", BattleStats(15),
                         false, true);
     case ('l'):
-      return new Object(ASSETS_PATH "/textures/objects/lava.png",
+      return new Object(ASSETS_PATH + object_textures_.at("lava"),
                         sf::IntRect(0, 0, 250, 250), "lava",
                         BattleStats(9999999999999), false, true);
     case ('b'):
-      return new Object(ASSETS_PATH "/textures/objects/bricks.jpg",
+      return new Object(ASSETS_PATH + object_textures_.at("bricks"),
                         sf::IntRect(0, 0, 512, 512), "brick wall",
                         BattleStats(9999999999999), false, false);
     case ('c'):
-      return new LootableObject(ASSETS_PATH "/textures/objects/chest.png",
+      return new LootableObject(ASSETS_PATH + object_textures_.at("chest"),
                                 sf::IntRect(0, 0, 320, 320), ASSETS_PATH "",
                                 "chest", BattleStats(5));
     default:
-      return new Object(ASSETS_PATH "/textures/objects/ground.jpg",
+      return new Object(ASSETS_PATH + object_textures_.at("ground"),
                         sf::IntRect(0, 0, 800, 800));
       ;
   }

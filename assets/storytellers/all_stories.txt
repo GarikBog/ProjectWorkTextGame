@@ -1,0 +1,19 @@
+
+
+STORY # Second Test story
+/small_events/quit.txt
+
+TYPE
+Battle
+
+REPEATED
+
+STORY #Test
+/small_events/TestEvent/first.txt
+/small_events/TestEvent/second.txt
+/small_events/TestEvent/third.txt
+
+TYPE
+Explorer
+UNIQUE
+	

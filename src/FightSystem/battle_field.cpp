@@ -28,6 +28,7 @@ BattleField::BattleField(sf::RenderWindow& window, std::string map_file_path,
     : BattleField(window, map_file_path,
                   new Icon(texture_file, texture_rectangle), pos) {
   self_made_icon_ = true;
+  is_visible_ = false;
 }
 
 BattleField::BattleField(sf::RenderWindow& window, std::string map_file_path,
@@ -133,8 +134,9 @@ void BattleField::CreateCells(std::string map_file_path) {
 
   std::ifstream file(map_file_path);
 
-  if (!file.is_open()) {  // ���� �� �������� ����, ������� ������� ����
-    throw std::exception("Cannot open battle file!");
+  if (!file.is_open()) {
+    file.open(ASSETS_PATH + map_file_path);
+    if (!file.is_open()) throw std::exception("Cannot open battle file!");
   }
 
   cells_.resize(kCountBattleCells_);

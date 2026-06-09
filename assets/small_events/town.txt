@@ -1,0 +1,5 @@
+DESCRIPTION Small Event test
+BACKGROUND Town
+
+ACTION /actions/test_action.txt
+ACTION /actions/quit.txt
